@@ -1,24 +1,15 @@
-# Fuseutil
-this is basic utils for secure coding
+package main
 
-> 安全编码基本工具集
+import (
+	"fmt"
+	"github.com/matsuwin/fuseutil/console"
+	"github.com/matsuwin/fuseutil/hystrix"
+	"github.com/matsuwin/fuseutil/hystrix/feign"
+	"github.com/matsuwin/fuseutil/siggroup"
+	"github.com/pkg/errors"
+	"time"
+)
 
-<br>
-
-Tree
-
-```
-.
-├── console       程序日志记录
-├── siggroup      基于信号的协程管理组
-|   └── errcause  提取错误的堆栈信息
-└── hystrix       熔断降级方法
-    └── feign     网络请求发起
-```
-
-## console
-
-```go
 func consoleTest() {
 
 	// 使用前初始化和配置
@@ -35,10 +26,7 @@ func consoleTest() {
 	console.WARN(message)
 	console.ERROR(errors.New(message))
 }
-```
-## siggroup
 
-```go
 func siggroupTest() {
 
 	// 添加一个任务，此方法可添加多个任务。注意！只适用于常驻任务
@@ -53,11 +41,7 @@ func siggroupTest() {
 		fmt.Println("程序结束")
 	})
 }
-```
 
-## hystrix
-
-```go
 func hystrixTest() {
 
 	// 开启一个具有熔断降级和超时功能的代码域
@@ -88,4 +72,3 @@ func hystrixTest() {
 		panic(err)
 	}
 }
-```
