@@ -1,24 +1,12 @@
 # Fuseutil
 this is basic utils for secure coding
 
-> 安全编码基本工具集
+![](https://img.shields.io/badge/安全编码基本工具集-FUSEUTIL-blue)
 
 <br>
 
-
-
-Tree
-
-```
-.
-├── console       程序日志记录
-├── siggroup      基于信号的协程管理组
-|   └── errcause  提取错误的堆栈信息
-└── hystrix       熔断降级方法
-    └── feign     网络请求发起
-```
-
 ## console
+这是一个简单的日志记录工具，通过异步的日志消费引擎实现。
 
 ```go
 // 使用前初始化和配置
@@ -35,8 +23,11 @@ console.DEBUG(message)
 console.WARN(message)
 console.ERROR(errors.New(message))
 ```
+
+<br>
+
 ## siggroup
-这是一个常用且必要的工具，一个进程中必然会有着多个任务同时运行的场景。实现安全关机非常容易。
+这是一个基于系统信号的任务组管理工具，解决进程中多个任务同时作业的优雅方法。也使得安全关机变得非常容易。
 
 ```go
 // 添加一个任务，此方法可添加多个任务。注意！只适用于常驻任务
@@ -52,8 +43,10 @@ siggroup.Wait(func() {
 })
 ```
 
+<br>
+
 ## hystrix
-这是一个用于熔断降级的小工具，名字来自于Java系，
+这是一个用于熔断降级的小工具，名字借鉴了 Java 体系。
 
 ```go
 // 开启一个具有熔断降级和超时功能的代码域
